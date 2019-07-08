@@ -72,9 +72,10 @@ class dashboard extends StatelessWidget {
                     new Expanded(
                       child: InkWell(
                         onTap: (){print("tapped");
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return lms();
-                        }));},
+//                        Navigator.push(context, MaterialPageRoute(builder: (context){
+//                          return lms();
+//                        }));
+                        },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5.0,top: 5.0),
                           child: Container(

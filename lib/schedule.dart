@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:folding_cell/folding_cell.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'map.dart';
 
 
 class Schedule extends StatefulWidget {
@@ -61,73 +60,211 @@ class Day_1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          children: <Widget>[
-            Container(
-              child: SimpleFoldingCell(
-                frontWidget: FrontWidget(),
-                innerTopWidget: InnerTopWidget(),
-                innerBottomWidget: InnerBottomWidget(),
-                cellSize: Size(MediaQuery.of(context).size.width,175.0),
-                padding: EdgeInsets.all(10.0),),
-            ),
-            Container(
-              child: SimpleFoldingCell(
-                frontWidget: FrontWidget(),
-                innerTopWidget: InnerTopWidget(),
-                innerBottomWidget: InnerBottomWidget(),
-                cellSize: Size(MediaQuery.of(context).size.width,175.0),
-                padding: EdgeInsets.all(10.0),),
-            )
-          ],
-        )
+        child: _ListPage()
 
     );
   }
 }
 
 
-Container FrontWidget(){
-  return Container(
-    color: Colors.blue,
-    alignment: Alignment.center,
-    child: Row(
+class eventCard extends StatelessWidget {
+  String title;
+  String time;
+  String venue;
+  String description;
+
+  eventCard({
+  this.title,this.description,this.time,this.venue
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Expanded(
-          flex: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.brown
+        Divider(color: Colors.black,),
+        Container(
+          decoration: BoxDecoration(boxShadow:[new BoxShadow(color: Colors.black,blurRadius: 5.0,)], ),
+          child: Card(
+            color: Colors.lightBlue[100],
+            child: InkWell(
+              splashColor: Colors.blue.withAlpha(30),
+              onTap: () {
+                print('Card tapped.');
+              },
+              child: FractionallySizedBox(
+                widthFactor: 1.0,
+                child: Container(
+                  height: 90,
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+//                        child: Text("Image",style: TextStyle(fontSize: 30.0,),textAlign: TextAlign.center,),
+                        height: 110,
+                        width: 90,
+                        decoration: BoxDecoration(
+                            boxShadow: [new BoxShadow(color: Colors.black,blurRadius: 2.0)],
+//                          color: Colors.grey,
+                            borderRadius: BorderRadius.circular(2.0),
+//                          border: Border.all(color: Colors.black),
+                            image: DecorationImage(
+                                image: new AssetImage("assets/images/bmu_logo.jpg"),
+                                fit: BoxFit.contain)
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(left: 4.0),
+                              margin: EdgeInsets.only(left: 10.0,right: 18.0,top: 4.0),
+                              decoration: BoxDecoration(
+                                  boxShadow: [new BoxShadow(color: Colors.black,blurRadius: 2.0)],
+
+                                  color: Colors.grey[50],
+                                  borderRadius: BorderRadius.circular(5.0)
+                              ),
+                              child: Text(
+                                this.title,
+                                style: TextStyle(fontSize: 14.0,),textAlign: TextAlign.left,),
+                            ),
+
+                            Container(
+                              padding: EdgeInsets.only(left: 10.0,),
+                              margin: EdgeInsets.only(top: 8.0,left: 10.0,right: 108.0,),
+                              width: 250,
+                              decoration: BoxDecoration(
+                                  boxShadow: [new BoxShadow(color: Colors.black,blurRadius: 2.0)],
+                                  color: Colors.grey[50],
+                                  borderRadius: BorderRadius.circular(5.0)
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text(
+                                    "3:30 pm - 4:30 pm",
+                                    style: TextStyle(fontSize: 14.0,),textAlign: TextAlign.left,),
+                                ],
+                              ),
+                            ),
+
+                            InkWell(
+                              onTap: (){
+                                print("venue");
+                              },
+                              child: Container(
+                                padding: EdgeInsets.only(left: 4.0,),
+                                margin: EdgeInsets.only(top: 6.0,left: 10.0,right: 18.0),
+                                height: 25.0,
+                                width: 250,
+                                decoration: BoxDecoration(
+                                    boxShadow: [new BoxShadow(color: Colors.black,blurRadius: 2.0)],
+                                    color: Colors.grey[50],
+                                    borderRadius: BorderRadius.circular(5.0)
+                                ),
+                                child: Stack(
+                                  children: <Widget>[
+                                    Container(
+                                      child:Row(
+                                        children: <Widget>[
+                                          Container(
+                                            child: Icon(Icons.place),
+//                                          color: Colors.red,
+                                          ),
+                                          Container(
+//                                          color: Colors.green,
+                                              margin: EdgeInsets.only(left: 2.0,top: 4.0),
+                                              child: Text("Multi Purpose Hall"))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+                        height: 110,
+                        width: 235,
+                        decoration: BoxDecoration(
+//                            color: Colors.brown,
+                            borderRadius: BorderRadius.circular(0.0),
+                            shape: BoxShape.rectangle
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          children: <Widget>[
+                            InkWell(
+                              onTap: (){
+                                print("Set As reminder");
+                              },
+                              child: Container(
+                                  child: Icon(Icons.notifications)),
+                            ),
+                            const Padding(padding: EdgeInsets.only(top: 8.0)),
+                            InkWell(
+                                onTap: (){
+                                  print("Route to more info Page");
+                                },
+                                child: Container(
+                                    child: Icon(Icons.info)))
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-            )
+            ),
+          ),
         ),
-        Expanded(
-            flex: 2,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white
-              ),
-            )
-        ),
+
       ],
-    ),
-  );
+    );
+  }
 }
 
-Container InnerTopWidget(){
-  return Container(
-    color: Colors.lightGreen,
-
-  );
+class _ListPage extends StatefulWidget {
+  @override
+  __ListPageState createState() => __ListPageState();
 }
 
-Container InnerBottomWidget(){
-  return Container(
-    color: Colors.white,
+class __ListPageState extends State<_ListPage> {
 
-  );
+  Future getCardinfo() async{
+
+    var firestore = Firestore.instance;
+
+    QuerySnapshot qn = await firestore.collection("student_schedule").document("Day1").collection("events").getDocuments();
+    return qn.documents;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Container(
+      child: FutureBuilder(
+          future: getCardinfo(),
+          builder: (_ , snapshot){
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return Center(
+                child: Text("Loading"),
+              );
+            }
+            else{
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (_, index){
+
+                    return eventCard(
+                      title: snapshot.data[index].data["title"] ,);
+
+                  }
+              );
+
+            }
+          }),
+    );
+  }
 }
-

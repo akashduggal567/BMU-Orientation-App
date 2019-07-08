@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "940127363919",
+    "firebase_url": "https://bmu-orientation-9e79d.firebaseio.com",
+    "project_id": "bmu-orientation-9e79d",
+    "storage_bucket": "bmu-orientation-9e79d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940127363919:android:0c03423db6306666",
+        "android_client_info": {
+          "package_name": "com.flutterdevs.flutter_app_orientation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940127363919-fn0r9fk6mqqcjktc6l49tpmo2rd1mmd2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArBg18NXy7u6rKVHXoYTr4HCxQ36VdN-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940127363919-fn0r9fk6mqqcjktc6l49tpmo2rd1mmd2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,6 +28,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   webview_flutter: ^0.3.9+1
   folding_cell: ^0.1.2
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,7 @@ flutter:
     - assets/images/3.png
     - assets/images/4.png
     - assets/images/5.png
+    - assets/images/bmu_logo.jpg
 
 
 #   assets:
