@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_orientation/schedule.dart';
 
+import 'detailed_info.dart';
 import 'lms_webview.dart';
 
 class dashboard extends StatelessWidget {
@@ -23,7 +24,8 @@ class dashboard extends StatelessWidget {
                   children: <Widget>[
                     new Expanded(
                       child: InkWell(
-                        onTap: (){print("tapped");
+                        onTap: (){
+                          print("tapped");
                         Navigator.push(context, MaterialPageRoute(builder: (context){
                           return Schedule();
                         }));},
@@ -49,7 +51,12 @@ class dashboard extends StatelessWidget {
                     ),
                     new Expanded(
                       child: InkWell(
-                        onTap: (){print("tapped");},
+                        onTap: (){print("tapped");
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return Detailed_info();
+                        }));
+
+                        },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5.0,top: 5.0),
                           child: Container(
@@ -72,9 +79,12 @@ class dashboard extends StatelessWidget {
                     new Expanded(
                       child: InkWell(
                         onTap: (){print("tapped");
-//                        Navigator.push(context, MaterialPageRoute(builder: (context){
-//                          return lms();
-//                        }));
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return Detailed_info();
+                        }));
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return Detailed_info();
+                        }));
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 5.0,top: 5.0),
