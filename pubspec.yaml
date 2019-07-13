@@ -29,6 +29,7 @@ dependencies:
   webview_flutter: ^0.3.9+1
   folding_cell: ^0.1.2
   cloud_firestore:
+  url_launcher: ^5.0.5
 
 dev_dependencies:
   flutter_test:
@@ -48,16 +49,96 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/1.png
-    - assets/images/2.png
-    - assets/images/3.png
-    - assets/images/4.png
-    - assets/images/5.png
+    - assets/images/1_poster.jpeg
+    - assets/images/2_poster.jpg
+    - assets/images/3_poster.jpg
     - assets/images/bmu_logo.jpg
     - assets/images/sanyal.png
 
+    - assets/images/clubs_logos/NSS-Logo.jpeg
+    - assets/images/club_heads/nss/nss-president.jpg
+    - assets/images/club_heads/nss/nss-vicepresident.jpg
 
-#   assets:
+    - assets/images/clubs_logos/robotics.jpg
+    - assets/images/club_heads/robotics/robotics-president.jpg
+    - assets/images/club_heads/robotics/robotics-vicepresident.jpg
+
+    - assets/images/clubs_logos/speakeasy.jpg
+    - assets/images/club_heads/speakeasy/speakeasy-president.png
+    - assets/images/club_heads/speakeasy/speakeasy-vicepresident.jpg
+
+    - assets/images/clubs_logos/acm.jpeg
+    - assets/images/club_heads/acm/acm-president.jpg
+    - assets/images/club_heads/acm/acm-vicepresident.jpg
+
+    - assets/images/clubs_logos/sierra_logo.png
+    - assets/images/club_heads/sierra/sierra-president.jpeg
+    - assets/images/club_heads/sierra/sierra-vicepresident.jpeg
+
+    - assets/images/clubs_logos/socialmedia_logo.jpg
+    - assets/images/club_heads/socialmedia/socialmedia-president.jpg
+    - assets/images/club_heads/socialmedia/socialmedia-vicepresident.jpg
+
+    - assets/images/clubs_logos/savera_logo.jpg
+    - assets/images/club_heads/savera/savera-president.jpg
+    - assets/images/club_heads/savera/savera-vicepresident.jpg
+
+    - assets/images/clubs_logos/tsec_logo.jpg
+    - assets/images/club_heads/tsec/tsec-president.jpg
+    - assets/images/club_heads/tsec/tsec-vicepresident.jpg
+
+    - assets/images/clubs_logos/culinary_logo.jpg
+    - assets/images/club_heads/culinary/culinary-president.jpg
+    - assets/images/club_heads/culinary/culinary-vicepresident.jpg
+
+    - assets/images/clubs_logos/adventure_logo.jpg
+    - assets/images/club_heads/adventure/adventure-president.jpg
+    - assets/images/club_heads/adventure/adventure-vicepresident.jpg
+
+    - assets/images/clubs_logos/fight_logo.jpg
+    - assets/images/club_heads/fight/fight-president.jpg
+    - assets/images/club_heads/fight/fight-vicepresident.jpg
+
+    - assets/images/clubs_logos/udaan_logo.jpg
+    - assets/images/club_heads/udaan/udaan-president.jpg
+    - assets/images/club_heads/udaan/udaan-vicepresident.jpg
+
+    - assets/images/clubs_logos/pac_logo.jpg
+    - assets/images/club_heads/pac/pac-president.jpg
+    - assets/images/club_heads/pac/pac-vicepresident.jpg
+
+    - assets/images/clubs_logos/strokes_logo.jpg
+    - assets/images/club_heads/strokes/strokes-president.jpg
+    - assets/images/club_heads/strokes/strokes-vicepresident.jpg
+
+    - assets/images/clubs_logos/enactus_logo.jpg
+    - assets/images/club_heads/enactus/enactus-president.jpg
+    - assets/images/club_heads/enactus/enactus-vicepresident.jpg
+
+    - assets/images/clubs_logos/liquid_logo.jpg
+    - assets/images/club_heads/liquid/liquid-president.jpg
+    - assets/images/club_heads/liquid/liquid-vicepresident.jpg
+
+    - assets/images/clubs_logos/sata_logo.jpg
+    - assets/images/club_heads/sata/sata-president.jpg
+    - assets/images/club_heads/sata/sata-vicepresident.jpg
+
+    - assets/images/clubs_logos/automobile_logo.jpg
+    - assets/images/club_heads/automobile/automobile-president.jpg
+    - assets/images/club_heads/automobile/automobile-vicepresident.jpg
+
+    - assets/images/clubs_logos/photography_logo.jpg
+    - assets/images/club_heads/photography/photography-president.jpg
+    - assets/images/club_heads/photography/photography-vicepresident.jpg
+
+    - assets/images/clubs_logos/environmental_logo.png
+    - assets/images/club_heads/environmental/environmental-president.jpg
+    - assets/images/club_heads/environmental/environmental-vicepresident.jpg
+
+    - assets/images/clubs_logos/scimat_logo.jpg
+    - assets/images/club_heads/scimat/scimat-president.jpg
+    - assets/images/club_heads/scimat/scimat-vicepresident.jpg
+  #   assets:
 #    - images/a_dot_burr.jpeg
 #    - images/a_dot_ham.jpeg
 

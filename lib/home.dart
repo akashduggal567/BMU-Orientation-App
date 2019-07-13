@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_orientation/widget_dashboard.dart';
-
 import 'image_carousel.dart';
 
 
@@ -13,21 +12,24 @@ class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView(
+//     color: Colors.black,
+      margin: EdgeInsets.only(bottom: 40.0),
+      child: Column(
 //        scrollDirection: null,
         children: <Widget>[
-          image_carousel(),
+          Container(
+//                color: Colors.grey,
+              child: image_carousel()),
           new Padding(
-            padding: EdgeInsets.all (25.0),
+            padding: EdgeInsets.all (MediaQuery.of(context).size.height*0.03),
           ),
-          dashboard(),
-          dashboard(),
-          Divider(height: 16.0, indent: 0.0,color: Colors.black,),
-          new Padding(
-            padding: EdgeInsets.all (25.0),
+          Expanded(
+            flex: 2,
+            child: Container(
+              height: 50,
+//                color: Colors.yellow,
+                child: dashboard()),
           ),
-
-
         ],
       ),
     );

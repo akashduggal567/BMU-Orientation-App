@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Orientation App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        canvasColor: Colors.transparent
       ),
       home: MyHomePage(title: 'Student Orientation 2019'),
 

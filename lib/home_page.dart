@@ -30,60 +30,62 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Colors.blue,
-        title: Text(widget.title,),  //style --> change text fond or size
-        leading: new IconButton(
-            icon: new Icon(Icons.menu),
-            onPressed: null),
+    return SafeArea(
+      child: Scaffold(
+//      appBar: AppBar(
+//        elevation: 1,
+//        backgroundColor: Colors.blue,
+//        title: Text(widget.title,),  //style --> change text font or size
+////        leading: new IconButton(
+////            icon: new Icon(Icons.menu),
+////            onPressed: null),
+//
+//      ),
+
+        backgroundColor: Colors.blue[100],
+        body: _pageOptions[_selectedpage],
+        bottomNavigationBar: BottomNavigationBar(elevation: 8.0,
+          unselectedItemColor: Colors.white,
+          selectedItemColor:  Colors.black,
+          backgroundColor: Colors.blue,
+
+
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedpage,
+          onTap: (int index){
+            setState(() {
+              _selectedpage = index;
+            });
+          },
+          items:[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text("Home")
+            ),
+
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                title: Text("Search")),
+
+            BottomNavigationBarItem(
+                icon: Icon(Icons.map),
+                title: Text("Map")
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_pin),
+                title: Text("person")),
+
+
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                title: Text("Profile")
+            ),
+
+
+          ],
+        )
 
       ),
-
-      backgroundColor: Colors.redAccent,
-      body: _pageOptions[_selectedpage],
-      bottomNavigationBar: BottomNavigationBar(elevation: 8.0,
-        unselectedItemColor: Colors.white,
-        selectedItemColor:  Colors.black,
-        backgroundColor: Colors.blue,
-
-
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedpage,
-        onTap: (int index){
-          setState(() {
-            _selectedpage = index;
-          });
-        },
-        items:[
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text("Home")
-          ),
-
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              title: Text("Search")),
-
-          BottomNavigationBarItem(
-              icon: Icon(Icons.map),
-              title: Text("Map")
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin),
-              title: Text("person")),
-
-
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              title: Text("Profile")
-          ),
-
-
-        ],
-      )
-
     );
   }
 }

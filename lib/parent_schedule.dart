@@ -1,20 +1,18 @@
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
-class Schedule extends StatefulWidget {
+class Parent_Schedule extends StatefulWidget {
   @override
   _ScheduleState createState() => _ScheduleState();
 }
 
-class _ScheduleState extends State<Schedule> with SingleTickerProviderStateMixin{
+class _ScheduleState extends State<Parent_Schedule> with SingleTickerProviderStateMixin{
   final List<Tab> myTabs = <Tab>[
-    Tab(text: '23/7'),
-    Tab(text: '24/7'),
-    Tab(text: '25/7'),
-    Tab(text: '26/7'),
-    Tab(text: '27/7'),
+    Tab(text: '22 July',),
+
   ];
   TabController _tabController;
 
@@ -34,23 +32,19 @@ class _ScheduleState extends State<Schedule> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      elevation: 1,
-      backgroundColor: Colors.blue,
-      title: Text("July 23 - July 27"),
-      centerTitle: true,
+        elevation: 1,
+        backgroundColor: Colors.blue,
+        title: Text("Parents Orientation"),
+        centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
           tabs: myTabs,
         ),
-    ),
+      ),
       body: TabBarView(
-        controller: _tabController,
+          controller: _tabController,
           children: <Widget>[
             Day_1() ,
-            Day_2(),
-            Day_3(),
-            Day_4(),
-            Day_5(),
           ]),
     );
   }
@@ -60,56 +54,13 @@ class Day_1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+        color: Colors.white,
         child: _ListPage(day: "Day1",)
 
     );
   }
 }
 
-class Day_2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        child: _ListPage(day: "Day2",)
-
-    );
-  }
-}
-
-class Day_3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        child: _ListPage(day: "Day3",)
-
-    );
-  }
-}
-
-class Day_4 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        child: _ListPage(day: "Day4",)
-
-    );
-  }
-}
-
-class Day_5 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Colors.white,
-        child: _ListPage(day: "Day5",)
-
-    );
-  }
-}
 
 
 class _ListPage extends StatefulWidget {
@@ -128,34 +79,16 @@ class _ListPage extends StatefulWidget {
 }
 
 class __ListPageState extends State<_ListPage> {
-
+  final AsyncMemoizer _memoizer = AsyncMemoizer();
+  Future _data;
 
   Future getCardinfo() async{
 
     var firestore = Firestore.instance;
     switch(widget.day){
       case "Day1":{
-        QuerySnapshot qn = await firestore.collection("student_schedule").document("Day1").collection("events").getDocuments();
-        return qn.documents;
-      }
-      break;
-      case "Day2":{
-        QuerySnapshot qn = await firestore.collection("student_schedule").document("Day2").collection("events").getDocuments();
-        return qn.documents;
-      }
-      break;
-      case "Day3":{
-        QuerySnapshot qn = await firestore.collection("student_schedule").document("Day3").collection("events").getDocuments();
-        return qn.documents;
-      }
-      break;
-      case "Day4":{
-        QuerySnapshot qn = await firestore.collection("student_schedule").document("Day4").collection("events").getDocuments();
-        return qn.documents;
-      }
-      break;
-      case "Day5":{
-        QuerySnapshot qn = await firestore.collection("student_schedule").document("Day5").collection("events").getDocuments();
+        QuerySnapshot qn = await firestore.collection("parent_schedule").document("Day1").collection("events").getDocuments();
+        print("DAY1  DAY1");
         return qn.documents;
       }
       break;
@@ -163,11 +96,18 @@ class __ListPageState extends State<_ListPage> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _data = getCardinfo();
+  }
+  @override
   Widget build(BuildContext context) {
 
     return Container(
       child: FutureBuilder(
-          future: getCardinfo(),
+          future: _data,
           builder: (_ , snapshot){
             if(snapshot.connectionState == ConnectionState.waiting){
               return Center(
@@ -221,18 +161,14 @@ class eventCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Padding(padding: EdgeInsets.all(2.0)),
+        const Padding(padding: EdgeInsets.all(.0)),
 //        Divider(color: Colors.black,),
         Container(
           padding: EdgeInsets.all(4.0),
-//          margin: EdgeInsets.only(left: 4.0,right: 4.0),
+//          margin: EdgeInsets.all(4.0),
           decoration: BoxDecoration(
             boxShadow:[new
-            BoxShadow(
-                color: Colors.grey[300],
-                blurRadius: 3.0,
-                spreadRadius: 0.0,
-                offset: Offset(4.0, 2.0))],
+            BoxShadow(color: Colors.grey[300],blurRadius: 3.0,spreadRadius: 0.0,offset: Offset(4.0, 2.0))],
           ),
           child: SizedBox(
             child: Card(
@@ -252,23 +188,19 @@ class eventCard extends StatelessWidget {
                         {
                           return Container(
                             height: screen_height*06,
-//                            color: Colors.black,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
 
-                            ) ,
 //
                             child: Container(
 
                               // PARENT CONTAINER ON WHICH BOTTOM SHEET IS DESIGNED
                                 child: Container(
-                                  margin: EdgeInsets.only(top:4.0),
+                                  margin: EdgeInsets.only(top:0.0),
                                   decoration: BoxDecoration(
-                                    color: Colors.blue[100],
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20.0),
-                                      topLeft: Radius.circular(20.0)
-                                    )
+                                      color: Colors.blue[100],
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(20.0),
+                                          topLeft: Radius.circular(20.0)
+                                      )
                                   ),
                                   width: screen_width,
 //                            color: Colors.pink[100],
@@ -344,12 +276,12 @@ class eventCard extends StatelessWidget {
                                                 // last container consisting of cards of speakers
                                                 Container(
                                                   height:320, //change height of 3rd container
-                                                                                                                  //                                                  color: Colors.black,
+//                                                  color: Colors.black,
                                                   child: Column(
                                                     children: <Widget>[
                                                       // Container of title
                                                       Container(
-                                                                                                                  //color: Colors.yellow[100],
+//                            color: Colors.yellow[100],
                                                         padding: EdgeInsets.all(8.0),
                                                         width: screen_width,
                                                         child: Text("Speakers",style: TextStyle(fontSize: 24.0),),
@@ -357,7 +289,7 @@ class eventCard extends StatelessWidget {
                                                       // Container for cards
                                                       Container(
                                                         margin: EdgeInsets.only(top:2.0),
-                                                                                                                    //                            color: Colors.black,
+//                            color: Colors.black,
                                                         height: 270,
                                                         // List of Cards
                                                         child: GuestListPage(day: day,event_serial: event_number),
@@ -442,13 +374,12 @@ class eventCard extends StatelessWidget {
                                           ),
 
                                           Container(
-//                                            color: Colors.blue[50],
                                             constraints: BoxConstraints(
                                               minHeight: 10.0,
                                               maxHeight: 20.0,
                                             ),
-                                            padding: EdgeInsets.only(left: 8.0,),
-                                            margin: EdgeInsets.only(top: 4.0,left: 0.0,),
+                                            padding: EdgeInsets.only(left: 10.0,),
+                                            margin: EdgeInsets.only(top: 4.0,left: 4.0,),
                                             width: 250,
 
                                             child: Row(
@@ -588,7 +519,7 @@ class guestSpeakersCard extends StatelessWidget {
                     margin: EdgeInsets.all(8.0),
                     child: ClipOval(
                       child:
-                      Image.network(guest_image,fit: BoxFit.fill,),
+                        Image.network(guest_image,fit: BoxFit.fill,),
 //                      Image.asset('assets/images/1.png',fit: BoxFit.fill,),
 
                     ),
@@ -657,7 +588,7 @@ class _GuestListPageState extends State<GuestListPage> {
   Future GuestCardinfo() async{
     var firestore = Firestore.instance;
 
-    QuerySnapshot qn = await firestore.collection("student_schedule_delegates").document(widget.day).collection("events").document(widget.event_serial).collection("guests").getDocuments();
+    QuerySnapshot qn = await firestore.collection("parent_schedule_delegates").document(widget.day).collection("events").document(widget.event_serial).collection("guests").getDocuments();
     print("DAY1");
     return qn.documents;
   }
@@ -685,7 +616,7 @@ class _GuestListPageState extends State<GuestListPage> {
                       guest_name: name ?? 'no',
                       guest_designation: designation ?? 'no',
                       guest_company: company ?? 'no',
-                      guest_image: image ?? " No Image Provided",
+                      guest_image: image ?? "No image provided",
 
                     );
                   },
@@ -695,6 +626,5 @@ class _GuestListPageState extends State<GuestListPage> {
     );
   }
 }
-
 
 
